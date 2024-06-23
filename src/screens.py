@@ -12,6 +12,7 @@ class LoseScreen:
 
     def show(self):
         self.screen.fill(self.colors['BLACK'])
+
         font = pygame.font.Font(None, 36)
         text = font.render("Game Over! Press Q to Quit or C to Play Again", True, self.colors['WHITE'])
         text_rect = text.get_rect(
