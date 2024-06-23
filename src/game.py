@@ -12,11 +12,14 @@ from src.sound import Sound
 
 class Game:
     def __init__(self):
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        pygame.display.set_caption("Mark's Classic Snake Game")
+        pygame.font.init()
         self.score: int = 0
         self.levels: list[Level] = LEVELS
         self.current_level = 0  # Is always level number - 1. Because levels list is zero index.
         self.cell_size = self.levels[self.current_level].cell_size   # Get cell size from level
-        self.snake: list = Snake(cell_size=self.cell_size)
+        self.snake: Snake = Snake(cell_size=self.cell_size)
         self.apple: Apple = Apple(cell_size=self.cell_size, color=COLORS['RED'])
         self.golden_apple = None
         self.poison_apple = None
@@ -29,7 +32,7 @@ class Game:
 
 
     def run(self):
-        start_screen = StartScreen(screen=screen, colors=COLORS, sound_object=self.sound_object)
+        start_screen = StartScreen(screen=self.screen, colors=COLORS, sound_object=self.sound_object)
         game_over = start_screen.show()
         if game_over:
             self.exit()
@@ -106,7 +109,7 @@ class Game:
             if self.current_level >= len(self.levels):
                 self.game_won()
             else:
-                level_screen = NextLevelScreen(screen=screen, colors=COLORS, sound_object=self.sound_object, level=self.current_level)
+                level_screen = NextLevelScreen(screen=self.screen, colors=COLORS, sound_object=self.sound_object, level=self.current_level)
                 game_over = level_screen.show()
                 if game_over:
                     self.exit()
@@ -115,14 +118,14 @@ class Game:
                     self.reset(self.current_level)
 
     def exit(self):
-        exit_screen = ExitScreen(screen=screen, colors=COLORS, sound_object=self.sound_object)
+        exit_screen = ExitScreen(screen=self.screen, colors=COLORS, sound_object=self.sound_object)
         exit_screen.show()
         pygame.quit()
-        exit()
+        exit(0)
 
     def game_won(self):
         self.sound_object.play_win_sound()
-        win_screen = WinGameScreen(screen=screen, colors=COLORS, sound_object=self.sound_object)
+        win_screen = WinGameScreen(screen=self.screen, colors=COLORS, sound_object=self.sound_object)
         game_over = win_screen.show()
         if game_over:
             self.exit()
@@ -133,7 +136,7 @@ class Game:
 
     def game_over(self):
         self.sound_object.play_lose_sound()
-        loose_screen = LoseScreen(screen=screen, colors=COLORS, sound_object=self.sound_object)
+        loose_screen = LoseScreen(screen=self.screen, colors=COLORS, sound_object=self.sound_object)
         game_over = loose_screen.show()
         if game_over:
             self.exit()
@@ -142,22 +145,22 @@ class Game:
 
 
     def draw(self):
-        screen.fill(COLORS['BLACK'])
-        self.snake.draw(screen)
-        self.apple.draw(screen)
+        self.screen.fill(COLORS['BLACK'])
+        self.snake.draw(self.screen)
+        self.apple.draw(self.screen)
         if self.levels[self.current_level].golden_apples:
-            self.golden_apple.draw(screen)
+            self.golden_apple.draw(self.screen)
         if self.levels[self.current_level].poison_apples:
-            self.poison_apple.draw(screen)
+            self.poison_apple.draw(self.screen)
         self.draw_level_info()
         pygame.display.flip()
 
     def draw_level_info(self):
         font = pygame.font.SysFont(None, 30)
         level_text = font.render(f"Level: {self.levels[self.current_level].level_number}", True, COLORS['WHITE'])
-        screen.blit(level_text, (10, 10))
+        self.screen.blit(level_text, (10, 10))
         score_text = font.render(f"Score: {self.score}", True, COLORS['WHITE'])
-        screen.blit(score_text, (10, 50))
+        self.screen.blit(score_text, (10, 50))
 
 
 
@@ -165,8 +168,8 @@ if __name__ == "__main__":
     # Initialize Pygame
     pygame.init()
     # Set up the display
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Mark's Classic Snake Game")
+    # screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    # pygame.display.set_caption("Mark's Classic Snake Game")
 
     # Run the game
     game = Game()
