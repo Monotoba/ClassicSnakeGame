@@ -2,22 +2,7 @@
 
 ---
 
-## Motivation
-I recently spent a considerable amount of time with a 5-year-old who found video games very enticing. When he became bored with the games on his tablet, I wrote a small snake game for him to play. The initial game took  approximately 20 minutes to code up and entertained him for hours. However, after he played the game a while, it became clear he needed more of a challenge from the crude game, and some of the bugs in the game needed to be fixed. So, I slowly iterated over the simple game until it became a version of the Classic Snake game worthy of a 5-year-old. 
-
-## Information
-Over the past 40+ years I've written many versions of snake. It was one of the first games I ever wrote and I wrote my first version in BASIC on a Tandy Color Computer, using ASCII characters for the snake and apple. I wrote later versions in 6809, 6502, and Z80 assembly. Then I moved on to using Pascal, with a small foray into Forth, and then C and eventually C++ in the 90s. With C and C++ being used on A Tandy 1000 SX. 
-
-The version I present here is still very simple, though it has 10 levels and more can be added, different apple types, including a poison apple that will chop off the tail of your snake and reset set your score. Each level has a target length the snake must reach to complete the level. The game displays the score and level information on the screen for player reference. The game includes some sounds and music I grabbed from the internet a long while back. So I am not sure who to credit for the audio. If you know who created these sounds please let me know. I would love to credit them! 
-
-The sounds original file names are:
-- 8bit-music-for-game-68698.mp3
-- game-over-arcade-6435.mp5
-- level-up-enhancement-8-bit-retro-sound-effect-153002.mp3
-
-## Game Play 
-
----
+## Quick Start 
 
 ### Playing The Game
 
@@ -44,7 +29,7 @@ This version of the classic snake game includes some enhancements not typically 
 
 ## Requirements
 
-To play Snake you will need to have Python 3.12 or greater installed on your system. If you run Linux or MacOS you should already have Python 3 installed. However, I have included instructions for doing so just in case:
+To play Snake you will need to have Python 3.12 or greater installed on your system. If you run Linux or MacOS you should already have Python 3 installed. However, I have included instructions for doing so on Windows, MacOS, and Linux, just in case:
 
 ### Instructions for Installing Python 3.12 or Later
 
@@ -138,36 +123,9 @@ To play Snake you will need to have Python 3.12 or greater installed on your sys
    - Click "New" and add the path to the Python installation directory (e.g., `C:\Python312\`).
    - Click "OK" to close all windows.
 
-### Additional Information
+---
 
-### Creating a Virtual Environment (Recommended for Development)
-
-1. **Create a Virtual Environment**:
-   ```sh
-   python3.12 -m venv myenv
-   ```
-
-2. **Activate the Virtual Environment**:
-
-   - **Linux/macOS**:
-     ```sh
-     source myenv/bin/activate
-     ```
-
-   - **Windows**:
-     ```sh
-     .\myenv\Scripts\activate
-     ```
-
-3. **Deactivate the Virtual Environment**:
-   ```sh
-   deactivate
-   ```
-
-These instructions will help you install Python 3.12 or later on Linux, macOS, and Windows 10/11, along with setting up and using a virtual environment for development.
-
-
-### Starting the Game
+## Starting the Game
 
 ### Instructions for Running the Game
 
@@ -272,43 +230,10 @@ These instructions will help you install Python 3.12 or later on Linux, macOS, a
      python3 -m src.game
      ```
 
-### Additional Notes
-
-- **Requirements File**:
-  Ensure you have a `requirements.txt` file in your project directory that lists all necessary dependencies. For example:
-  ```txt
-  pygame
-  # Add any other dependencies here
-  ```
-
-- **Virtual Environment (Recommended)**:
-  - **Creating a Virtual Environment**:
-    ```sh
-    python3 -m venv myenv
-    ```
-  - **Activating the Virtual Environment**:
-    - **Windows**:
-      ```sh
-      .\myenv\Scripts\activate
-      ```
-    - **macOS/Linux**:
-      ```sh
-      source myenv/bin/activate
-      ```
-  - **Installing Dependencies in the Virtual Environment**:
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-By following these instructions, you can easily run your game on Windows, macOS, and Linux.
-
-
 ---
 
-## Making The Game You Own
+## Additional Information
 
-If you are a python developer/tinkerer, you can add new features to the game easily. The game is created from a half dozen simple classes that organize the code for easy modification. You can learn more about each class and its purpose in the docs/code directory.
+Please see the manual.md file in the docs directory if you have any issues or simply want to learn more about the game or develop your own version, or make modifications.
 
-Even if you don't know how to program you can still modify some game settings to your liking. In the levels.py file you will find a python list names LEVELS that controls the various level attributes. You can change these to your liking making each level harder or easier, turn on/off Golden Apples and Bad Apples, etc. You can even change the music files found in the assets directory as long as you either modify the filenames in the sound.py file or rename the new files to match the names of the old files.
-
-In short, this game was created to share a bit of nostalgia and history with a 5-year-old who really only wanted to play a game! So take it, make it your own, and enjoy! The only requirement is to have fun! If you do modify the game I would greatly appriciate it if you would credit me and the leave in the request for info on the creator of the audio files (which were freely available in the internet from somewhere...). However, even this is not required. It just being neighborly.
+Information on the code files can be found in the docs/code directory.
