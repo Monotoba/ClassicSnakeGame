@@ -1,6 +1,7 @@
 # Classic Snake Game
 
 ---
+![Screenshot](docs/imgs/screenshot_00007.png)
 
 ## Quick Start 
 

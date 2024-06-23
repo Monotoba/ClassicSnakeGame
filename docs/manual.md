@@ -2,6 +2,8 @@
 
 ---
 
+![Screenshot](imgs/screenshot_00007.png)
+
 ## Motivation
 I recently spent a considerable amount of time with a 5-year-old who found video games very enticing. When he became bored with the games on his tablet, I wrote a small snake game for him to play. The initial game took  approximately 20 minutes to code up and entertained him for hours. However, after he played the game a while, it became clear he needed more of a challenge from the crude game, and some of the bugs in the game needed to be fixed. So, I slowly iterated over the simple game until it became a version of the Classic Snake game worthy of a 5-year-old. 
 
