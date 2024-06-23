@@ -1,15 +1,36 @@
+import os
 import pygame
+
 
 class Sound:
     def __init__(self):
+        pygame.mixer.init()
         self._sound_on = False
         self.sound_volume = 0.5
         self._music_on = False
         self.music_volume = 0.5
-        self.background_music = pygame.mixer.Sound('assets/background_music.mp3')
-        self.win_sound = pygame.mixer.Sound('assets/level_up.mp3')
-        self.lose_sound = pygame.mixer.Sound('assets/game_over.mp3')
-        self.hit_wall_sound = pygame.mixer.Sound('assets/game_over.mp3')
+        self.background_music = None
+        self.win_sound = None
+        self.lose_sound = None
+        self.hit_wall_sound = None
+        self.load_files()
+
+    def load_files(self):
+        # Get absolute path to assets folder
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        assets_dir = os.path.join(script_dir, '..', 'assets')
+        # Background music
+        file_path = os.path.join(assets_dir, 'background_music.mp3')
+        self.background_music = pygame.mixer.Sound(file_path)
+        # Level up sound
+        file_path = os.path.join(assets_dir, 'level_up.mp3')
+        self.win_sound = pygame.mixer.Sound(file_path)
+        # Game Over sound
+        file_path = os.path.join(assets_dir, 'game_over.mp3')
+        self.lose_sound = pygame.mixer.Sound(file_path)
+        # Hit Wall sound
+        file_path = os.path.join(assets_dir, 'game_over.mp3')
+        self.hit_wall_sound = pygame.mixer.Sound(file_path)
 
     # Getter and Setter for sound_on
     @property
